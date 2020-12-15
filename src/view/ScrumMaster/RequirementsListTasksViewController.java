@@ -39,7 +39,7 @@ public class RequirementsListTasksViewController
     this.pmodel = new ProjectListViewModel(model);
     this.model = model;
 
-
+    title.setCellValueFactory(cellData -> cellData.getValue().getTitle());
     who.setCellValueFactory(cellData -> cellData.getValue().getWho());
     what.setCellValueFactory(cellData -> cellData.getValue().getWhat());
     why.setCellValueFactory(cellData -> cellData.getValue().getWhy());

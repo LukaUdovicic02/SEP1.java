@@ -66,6 +66,16 @@ public class ProjectListModelManager implements ProjectListModel
   {
     taskList.add(task);
   }
+  @Override
+  public Task removeTask(Task task)
+  {
+    return taskList.removeTask(task);
+  }
+
+  @Override
+  public Requirement removeRequirement(Requirement requirement) {
+    return requirementsList.removeRequirement(requirement);
+  }
 
   @Override public int RequirementsListSize()
   {

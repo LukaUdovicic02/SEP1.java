@@ -80,7 +80,13 @@ public class RequirementsListViewController
 
   public void deleteOnClick(ActionEvent actionEvent)
   {
-
+    RequiementsViewModel selectedItem = RequirementsList.getSelectionModel().getSelectedItem();
+    MyDate myDate = new MyDate();
+    StartDate_DeadLine startDate_deadLine = new StartDate_DeadLine(myDate);
+    Requirement requirement = new Requirement(selectedItem.getTitle().get() , selectedItem.getWhy().get(), selectedItem.getWho().get() , selectedItem.getWhat().get() , Integer.parseInt(selectedItem.neededTimeProperty().get()) , startDate_deadLine);
+    smodel.remove(requirement);
+    model.removeRequirement(requirement);
+    RequirementsList.getSelectionModel().clearSelection();
   }
 
   public void assignePersonOnClick(ActionEvent actionEvent)
@@ -110,7 +116,6 @@ public class RequirementsListViewController
 
   public void reset()
   {
-
     smodel.update();
   }
 }

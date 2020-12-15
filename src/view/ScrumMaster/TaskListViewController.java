@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
-import model.ProjectListModel;
+import model.*;
 import view.ViewHandler;
 import view.viewModels.*;
 
@@ -34,7 +34,7 @@ public class TaskListViewController
     this.model = model;
     this.tmodel = new TaskListViewModel(model);
 
-    title.setCellValueFactory(cellData -> cellData.getValue().getTaskTitle());
+    title.setCellValueFactory(cellData -> cellData.getValue().getTitle());
     timeEstimeted.setCellValueFactory(
         cellData -> cellData.getValue().getTaskTimeEstimated());
 
@@ -72,6 +72,11 @@ public class TaskListViewController
 
   public void deleteOnClick(ActionEvent actionEvent)
   {
+    TaskViewModel selectedItem = TaskList.getSelectionModel().getSelectedItem();
+    Task task = new Task(selectedItem.getTitle().get() ,selectedItem.getTaskID().get() , Integer.parseInt(selectedItem.getTaskTimeEstimated().get()));
+    tmodel.remove(task);
+    model.removeTask(task);
+    TaskList.getSelectionModel().clearSelection();
   }
 
   public void assignePersonOnClick(ActionEvent actionEvent)

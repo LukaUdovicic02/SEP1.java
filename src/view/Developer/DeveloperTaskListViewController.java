@@ -36,7 +36,7 @@ public class DeveloperTaskListViewController {
     this.model = model;
     this.tmodel = new TaskListViewModel(model);
 
-    title.setCellValueFactory(cellData -> cellData.getValue().getTaskTitle());
+    title.setCellValueFactory(cellData -> cellData.getValue().getTitle());
     timeEstimeted.setCellValueFactory(
         cellData -> cellData.getValue().getTaskTimeEstimated());
 

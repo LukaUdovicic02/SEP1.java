@@ -15,6 +15,8 @@ public interface ProjectListModel {
     void addTask(Task task);
     int RequirementsListSize();
     Requirement getRequirement(int index);
+    Requirement removeRequirement(Requirement requirement);
+    Task removeTask(Task task);
     void addDeveloper(String title,Person person);
     public void setTimeEstimated(String timeEstimated);
     Time showTimeSpentOnRequirement();
