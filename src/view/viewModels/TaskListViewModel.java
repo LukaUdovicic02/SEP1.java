@@ -54,7 +54,7 @@ public class TaskListViewModel {
 
     public void remove(Task task) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).toString().equals(task.toString()))
+            if (list.get(i).getTaskTitle().get().equals(task.getTitle()))
             {
                 list.remove(i);
                 break;

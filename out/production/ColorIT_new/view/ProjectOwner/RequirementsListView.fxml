@@ -38,7 +38,7 @@
                   <Font size="25.0" />
                </font>
             </Button>
-            <Button fx:id="assignPerson" mnemonicParsing="false" onAction="#assignePersonOnClick" prefWidth="250.0" text="Assigne Person">
+            <Button fx:id="assignPerson" mnemonicParsing="false" onAction="#assignePersonOnClick" prefWidth="250.0" text="Assign Person">
                <font>
                   <Font size="25.0" />
                </font>

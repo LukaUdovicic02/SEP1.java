@@ -27,7 +27,7 @@ public class TaskList {
 
     public Task removeTask(Task task) {
         for (int i = 0; i < tasklist.size(); i++) {
-            if (tasklist.get(i).toString().equals(task.toString()))
+            if (SpecificTask(i).getTitle().equals(task.getTaskID()))
             {
                 tasklist.remove(i);
                 break;
