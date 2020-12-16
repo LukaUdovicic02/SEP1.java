@@ -24,21 +24,5 @@ public class RequirementsList
   {
     return requirements.size();
   }
-  public Requirement SpeicficReq(int index)
-  {
-    return requirements.get(index);
-  }
 
-  public Requirement removeRequirement(Requirement requirement)
-  {
-    for (int i = 0; i < requirements.size(); i++)
-    {
-      if (SpeicficReq(i).getTitle().equals(requirement.getTitle()))
-      {
-        requirements.remove(i);
-        break;
-      }
-    }
-    return null;
-  }
 }

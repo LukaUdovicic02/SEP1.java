@@ -18,6 +18,7 @@ public class Requirement {
     private boolean isOpened;
     private Developer responsibleDeveloper;
     private int timeSpent;
+    private String requirementStatus;
 
     private Random r;
     private int id;
@@ -45,24 +46,13 @@ public class Requirement {
         this.tasks = new ArrayList<>();
         this.isApproved = false;
         this.isDisapproved = false;
+        this.requirementStatus = "not started";
     }
     public Requirement(String title, String who){
         this.title = title;
         this.who = who;
     }
 
-    public void setRequirementApproved()
-    {
-        if (disapproved)
-        {
-            approved = false;
-        }
-        approved = true;
-    }
-
-    public void setTimeSpent(int timeSpent) {
-        this.timeSpent = timeSpent;
-    }
     public void removeTask(int index){
         tasks.remove(index);
     }
@@ -82,10 +72,6 @@ public class Requirement {
 
     public String getTitle() {
         return title;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
 
@@ -116,24 +102,6 @@ public class Requirement {
     }
 
 
-
-    public void setRequirementDisapproved()
-    {
-        if (approved)
-        {
-            disapproved = false;
-        }
-        disapproved = true;
-    }
-    public boolean doesTeamMemberExist(TeamMembers member) {
-        for (TeamMembers teamMembers : list) {
-            if (teamMembers == member) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void setResponsibleDeveloper(Developer developer)
     {
         responsibleDeveloper = developer;
@@ -158,9 +126,6 @@ public class Requirement {
         return responsibleDeveloper;
     }
 
-    public String getResponsibleDeveloperString() {
-        return responsibleDeveloper.toString();
-    }
 
     public String getID() {
         return ID;
@@ -226,15 +191,6 @@ public class Requirement {
         return " " + ID + " " + why + " " + who + " " + what + " " + responsibleDeveloper + " " + date + " " + neededtime;
     }
 
-    public boolean isTaskFinished()
-    {
-        return false;
-    }
-
-    public boolean isTaskApproved()
-    {
-        return false;
-    }
 
     public void setApproved(boolean approved) {
         isApproved = approved;
@@ -246,24 +202,34 @@ public class Requirement {
     public boolean getApproved(){
         return isApproved;
     }
-    public boolean getDisaproved(){
-        return isDisapproved;
+
+    public String getStatus(){
+        return requirementStatus;
+    }
+
+    public void setRequirementStatus(){
+        if (isApproved){
+            requirementStatus = "finished";
+            return;
+        }
+        if (isDisapproved){
+            requirementStatus = "disapproved";
+            return;
+        }
+        if (timeSpent <= 0){
+            requirementStatus = "not started";
+            return;
+        }
+        if (timeSpent < neededtime){
+            requirementStatus = "in progress";
+            return;
+        }
+        requirementStatus = "to approve";
     }
 
     public String getRequirementStatus(){
-        if (isApproved){
-            return "finished";
-        }
-        if (isDisapproved){
-            return "disapproved";
-        }
-        if (timeSpent <= 0){
-            return "not started";
-        }
-        if (timeSpent < neededtime){
-            return "in progress";
-        }
-        return "to approve";
+        this.setRequirementStatus();
+        return this.getStatus();
     }
     public void removeTasks(){
         for(int x = 0; x < tasks.size(); x++){
