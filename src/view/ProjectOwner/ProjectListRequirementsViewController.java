@@ -1,13 +1,22 @@
 package view.ProjectOwner;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
 import model.ProjectListModel;
+import parser.ParserException;
+import parser.XmlJsonParser;
 import view.ViewHandler;
 import view.viewModels.ProjectListViewModel;
 import view.viewModels.ProjectViewModel;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class ProjectListRequirementsViewController
 {
@@ -82,5 +91,17 @@ public class ProjectListRequirementsViewController
   public void reset()
   {
     smodel.update();
+  }
+
+  public void webPageOnAction(ActionEvent actionEvent)
+      throws ParserException, URISyntaxException, IOException
+  {
+    XmlJsonParser parser = new XmlJsonParser();
+    File file = parser.toJson(this.model.getProjects(), "../projecwork.json");
+    System.out.println("File: " + file.getAbsolutePath());
+    Desktop d = Desktop.getDesktop();
+    d.browse(new URI("https://davidmichalco.000webhostapp.com/project.html"));
+
+
   }
 }

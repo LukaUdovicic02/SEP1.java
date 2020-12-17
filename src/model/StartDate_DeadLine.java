@@ -7,14 +7,21 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * StartDate_DeadLine class
+ */
 public class StartDate_DeadLine {
 
     private MyDate myDateDeadline;
     private MyDate myDateStartDate;
-    private DateFormat dateFormat;
+    private transient DateFormat dateFormat;
     private Date date;
     private String[] datesValues;
 
+    /**
+     * StartDate_DeadLine constructor
+     * @param myDateDeadline deadline
+     */
     public StartDate_DeadLine(MyDate myDateDeadline)
     {
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -25,10 +32,18 @@ public class StartDate_DeadLine {
         this.myDateDeadline = myDateDeadline;
     }
 
+    /**
+     * get method for deadline
+     * @return deadline
+     */
     public MyDate getMyDateDeadline() {
         return myDateDeadline;
     }
 
+    /**
+     * get method for start date
+     * @return start date
+     */
     public MyDate getMyDateStartDate() {
         return myDateStartDate;
     }
